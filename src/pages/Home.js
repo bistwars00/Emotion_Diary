@@ -31,7 +31,7 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0, // 해닫 월의 마지막 일 // 마지막 날의 시분초까지 정해줘야 31일 나옴
+        0, // 해당 월의 마지막 일 // 마지막 날의 시분초까지 정해줘야 31일 나옴
         23,
         59,
         59
