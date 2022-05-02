@@ -30,13 +30,12 @@ const reducer = (state, action) => {
       return state;
   }
   localStorage.setItem("diary", JSON.stringify(newState));
-  // 결국은 newState가 변할때, 위의 case 문이 실행되는거니까,
-  // 마지막에 return되기 전에, 해당 배열을 문자화 시켜서 로컬스토리지에 저장함
+
   return newState;
 };
 
-export const DiaryStateContext = React.createContext(); //전역에 데이터를 전달하기 위해서 만듬
-export const DiaryDispatchContext = React.createContext(); //전역에 생성,수정,제거와 같은 반응형을 전달하기 위해서 만듬
+export const DiaryStateContext = React.createContext(); 
+export const DiaryDispatchContext = React.createContext(); 
 
 function App() {
   useEffect(() => {
@@ -52,7 +51,7 @@ function App() {
   }, []);
 
   const env = process.env;
-  env.PUBLIC_URL = env.PUBLIC_URL || ""; //이미지 불러오기 오류날때 기입함
+  env.PUBLIC_URL = env.PUBLIC_URL || ""; 
 
   useEffect(() => {
     const localData = localStorage.getItem("diary");
@@ -64,12 +63,12 @@ function App() {
       if (diaryList.length >= 1) {
         dataId.current = parseInt(diaryList[0].id) + 1;
 
-        dispatch({ type: "INIT", data: diaryList }); //로컬리스트에 저장된 데이터를 INIT함수를 통해서, 초기화(메인)시 불러오게함
+        dispatch({ type: "INIT", data: diaryList }); 
       }
     }
   }, []);
 
-  const [data, dispatch] = useReducer(reducer, []); //모든것의 시초가 되는, data 전달체
+  const [data, dispatch] = useReducer(reducer, []); 
 
   const dataId = useRef(0);
   //CREATE
