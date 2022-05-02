@@ -224,9 +224,9 @@ header button {
 }
 
 .DiaryEditor .emotion_list_wrapper {
-  display: grid; /*칸을 만들어줌*/
-  grid-template-columns: repeat(5, auto); /*칸을 5개로 나누고 사이즈는 자동*/
-  gap: 2%; /*칸 사이의 갭 2%*/
+  display: grid; 
+  grid-template-columns: repeat(5, auto);
+  gap: 2%; 
 }
 
 .DiaryEditor textarea {
