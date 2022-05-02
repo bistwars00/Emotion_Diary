@@ -38,18 +38,6 @@ export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext(); 
 
 function App() {
-  useEffect(() => {
-    localStorage.setItem("key1", 10);
-    localStorage.setItem("key2", "20");
-    localStorage.setItem("key3", JSON.stringify({ value: 30 }));
-
-    const item1 = parseInt(localStorage.getItem("key1"));
-    const item2 = localStorage.getItem("key2");
-    const item3 = JSON.parse(localStorage.getItem("key3"));
-
-    console.log(item1, item2, item3);
-  }, []);
-
   const env = process.env;
   env.PUBLIC_URL = env.PUBLIC_URL || ""; 
 
