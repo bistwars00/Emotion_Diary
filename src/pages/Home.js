@@ -5,9 +5,9 @@ import MyButton from "./../components/MyButton";
 import DiaryList from "./../components/DiaryList";
 
 const Home = () => {
-  const diaryList = useContext(DiaryStateContext); //해당 월의 데이터를 출력
+  const diaryList = useContext(DiaryStateContext); 
 
-  const [data, setData] = useState([]); //해당 월, 이외의 데이터를 없애기 위해서
+  const [data, setData] = useState([]); 
   const [curDate, setCurDate] = useState(new Date());
   console.log(curDate);
 
@@ -15,23 +15,22 @@ const Home = () => {
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName("title")[0];
-    titleElement.innerHTML = `감정 일기장`; //페이지 타이틀 제목 각각 바꿔주기
+    titleElement.innerHTML = `감정 일기장`;
   }, []);
 
   useEffect(() => {
     if (diaryList.length >= 1) {
-      // 리스트에 데이터가 하나 이상일때만 해당로직 렌더링함
 
       const firstDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth(),
-        1 // 해당 월의 1일(시작점)
+        1 
       ).getTime();
 
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0, // 해당 월의 마지막 일 // 마지막 날의 시분초까지 정해줘야 31일 나옴
+        0, 
         23,
         59,
         59
@@ -44,7 +43,7 @@ const Home = () => {
   }, [diaryList, curDate]);
 
   useEffect(() => {
-    console.log(data); // 데이터가 바뀔때마다 콘솔에 출력
+    console.log(data); 
   }, [data]);
 
   const increaseMonth = () => {
