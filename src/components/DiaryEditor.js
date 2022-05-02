@@ -15,11 +15,10 @@ env.PUBLIC_URL = env.PUBLIC_URL || "";
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
-  const [emotion, setEmotion] = useState(3); // 클릭시 이미지 상태 변환의 기준점이 되는 state
+  const [emotion, setEmotion] = useState(3); 
   const [date, setDate] = useState(getStringDate(new Date()));
-  // 당일 날짜를 기본으로 해줌
 
-  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext); //submit 버튼 눌렀을 때
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
   const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
   }, []);
@@ -38,14 +37,12 @@ const DiaryEditor = ({ isEdit, originData }) => {
       )
     ) {
       if (!isEdit) {
-        //isEdit이 수정중이지 않을때는, submit 누르면 onCreate로 새로 만들기 출력
         onCreate(date, content, emotion);
       } else {
         onEdit(originData.id, date, content, emotion);
-        //isEdit이 수정중일 때는, submit 누르면 onEdit으로 수정하기 출력
       }
     }
-    navigate("/", { replace: true }); // 다시 이전 페이지로 못돌아가게함
+    navigate("/", { replace: true });
   };
 
   const handleRemove = () => {
@@ -56,11 +53,10 @@ const DiaryEditor = ({ isEdit, originData }) => {
   };
 
   useEffect(() => {
-    //isEdit과 originData를 넘겨 받았을때(수정요청시), 타겟팅된 origin일자와 해당 데이터를 불러옴
     if (isEdit) {
       setDate(getStringDate(new Date(parseInt(originData.date))));
-      setEmotion(originData.emotion); // 타겟팅된 오리진 감정상태 불러옴
-      setContent(originData.content); // 타겟팅된 오리진 내용 불러옴
+      setEmotion(originData.emotion); 
+      setContent(originData.content); 
     }
   }, [isEdit, originData]);
 
@@ -72,7 +68,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
           <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
         }
         rightChild={
-          isEdit && ( //isEdit이 true일때만(수정상황)실행되게함
+          isEdit && ( 
             <MyButton
               text={"삭제하기"}
               type={"negative"}
@@ -101,7 +97,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
                 key={it.emotion_id}
                 {...it}
                 onClick={handleClickEmote}
-                isSelected={it.emotion_id === emotion} //해당 그림이 선택 되었는지 여부를 인식하게함
+                isSelected={it.emotion_id === emotion} 
               />
             ))}
           </div>
